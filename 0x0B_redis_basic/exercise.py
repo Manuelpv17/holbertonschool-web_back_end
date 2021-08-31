@@ -14,7 +14,7 @@ def replay(method: Callable):
     s_name = method.__qualname__
     s_key = self_.get(s_name)
     if s_key:
-        times = self_.get_str(s_key)
+        times = s_key.decode("utf-8")
         inputs = self_._redis.lrange(s_name + ":inputs", 0, -1)
         outputs = self_._redis.lrange(s_name + ":outputs", 0, -1)
 
