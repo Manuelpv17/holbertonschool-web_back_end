@@ -8,6 +8,25 @@ from typing import Union, Optional, Callable
 from functools import wraps
 
 
+def replay(method: Callable):
+    """ replay history of calls to a function """
+    self_ = method.__self__
+    s_name = method.__qualname__
+    s_key = self_.get(s_name)
+    if s_key:
+        times = self_.get_str(s_key)
+        inputs = self_._redis.lrange(s_name + ":inputs", 0, -1)
+        outputs = self_._redis.lrange(s_name + ":outputs", 0, -1)
+
+        print(f"{s_name} was called {times} times:")
+        zipvalues = zip(inputs, outputs)
+        result_list = list(zipvalues)
+        for i, j in result_list:
+            name = self_.get_str(i)
+            val = self_.get_str(j)
+            print(f"{s_name}(*{name}) -> {val}")
+
+
 def count_calls(method: Callable) -> Callable:
     """ count number of calls - decorator """
 
