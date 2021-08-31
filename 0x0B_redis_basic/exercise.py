@@ -19,12 +19,12 @@ def replay(method: Callable):
         outputs = self_._redis.lrange(s_name + ":outputs", 0, -1)
 
         print(f"{s_name} was called {times} times:")
-        zipvalues = zip(inputs, outputs)
-        result_list = list(zipvalues)
-        for i, j in result_list:
+        zip = zip(inputs, outputs)
+        result = list(zip)
+        for i, j in result:
             name = self_.get_str(i)
-            val = self_.get_str(j)
-            print(f"{s_name}(*{name}) -> {val}")
+            value = self_.get_str(j)
+            print(f"{s_name}(*{name}) -> {value}")
 
 
 def count_calls(method: Callable) -> Callable:
