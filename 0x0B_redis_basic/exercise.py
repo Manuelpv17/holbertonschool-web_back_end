@@ -19,8 +19,8 @@ def replay(method: Callable):
         outputs = self_._redis.lrange(s_name + ":outputs", 0, -1)
 
         print(f"{s_name} was called {times} times:")
-        zip = zip(inputs, outputs)
-        result = list(zip)
+        v_zip = zip(inputs, outputs)
+        result = list(v_zip)
         for i, j in result:
             name = self_.get_str(i)
             value = self_.get_str(j)
