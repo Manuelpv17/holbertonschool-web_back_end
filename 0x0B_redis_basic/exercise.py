@@ -22,8 +22,8 @@ def replay(method: Callable):
         v_zip = zip(inputs, outputs)
         result = list(v_zip)
         for i, j in result:
-            name = self_.decode("utf-8")
-            value = self_.decode("utf-8")
+            name = i.decode("utf-8")
+            value = j.decode("utf-8")
             print(f"{s_name}(*{name}) -> {value}")
 
 
