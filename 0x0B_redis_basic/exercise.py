@@ -34,7 +34,7 @@ def count_calls(method: Callable) -> Callable:
 
     @wraps(method)
     def wrapper(self, *args, **kwargs):
-        """ Wrapper """
+        """ Wrapper for decorator functionality """
         self._redis.incr(key)
         return method(self, *args, **kwargs)
 
@@ -46,9 +46,8 @@ def call_history(method: Callable) -> Callable:
 
     @wraps(method)
     def wrapper(self, *args, **kwargs):
-        """wrapper"""
+        """ Wrapper for decorator functionality """
         self._redis.rpush(method.__qualname__ + ":inputs", str(args))
-
         output = str(method(self, *args, **kwargs))
         self._redis.rpush(method.__qualname__ +
                           ":outputs", output)
@@ -58,6 +57,8 @@ def call_history(method: Callable) -> Callable:
 
 
 class Cache:
+    """ Class for saving cache on redis """
+
     def __init__(self):
         """ constructor for class Cache """
 
