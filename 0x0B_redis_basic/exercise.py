@@ -59,7 +59,7 @@ def call_history(method: Callable) -> Callable:
 
 class Cache:
     def __init__(self):
-        """ Init """
+        """ constructor for class Cache """
 
         self._redis = redis.Redis()
         self._redis.flushdb()
@@ -67,7 +67,7 @@ class Cache:
     @call_history
     @count_calls
     def store(self, data: Union[str, bytes, int, float]) -> str:
-        """store string in redis"""
+        """store string in redis """
         random_key = str(uuid.uuid4())
         self._redis.set(random_key, data)
 
@@ -82,12 +82,12 @@ class Cache:
         return self._redis.get(key)
 
     def get_str(self, key: str) -> str:
-        """ to str """
+        """ redis to str """
         value = self._redis.get(key)
         return value.decode("utf-8")
 
     def get_int(self, key: str) -> int:
-        """ to int """
+        """ redis to int """
         value = self._redis.get(key)
         try:
             value = int(value.decode("utf-8"))
