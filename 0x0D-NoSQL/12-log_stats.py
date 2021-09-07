@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """ 12. Log stats - pymongo """
-
 from pymongo import MongoClient
 
 
@@ -9,7 +8,7 @@ if __name__ == "__main__":
     collection = client.logs.nginx
 
     logs = collection.count_documents({})
-    print(f'{logs} logs')
+    print(f"{logs} logs")
 
     methods = ["GET", "POST", "PUT", "PATCH", "DELETE"]
 
