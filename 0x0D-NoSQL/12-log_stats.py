@@ -16,10 +16,10 @@ if __name__ == "__main__":
     print('Methods:')
     for method in methods:
         count = collection.count_documents({"method": method})
-        print(f'\tmethod {method}: {count}')
+        print('\tmethod {}: {}'.format(method, count))
 
     status = collection.count_documents(
         {"method": "GET", "path": "/status"}
     )
 
-    print(f'{status} status check')
+    print('{} status check'.format(status))
