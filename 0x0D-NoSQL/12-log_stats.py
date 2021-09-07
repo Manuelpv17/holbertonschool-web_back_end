@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" 12. Log stats - pymongo """
+""" Module for using PyMongo to parse nginx logs """
 
 from pymongo import MongoClient
 
@@ -8,6 +8,7 @@ from pymongo import MongoClient
 client = MongoClient()
 col = client.logs.nginx
 
+# have to use empty {} to get count of all docs!
 count = col.count_documents({})
 get = col.count_documents({"method": "GET"})
 post = col.count_documents({"method": "POST"})
