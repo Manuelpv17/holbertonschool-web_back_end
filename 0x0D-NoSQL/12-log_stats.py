@@ -5,9 +5,9 @@ from pymongo import MongoClient
 
 
 client = MongoClient('mongodb://127.0.0.1:27017')
-collection = client.logs.nginx
+collection_nginx = client.logs.nginx
 
-logs = collection.count_documents({})
+logs = collection_nginx.count_documents({})
 print(f'{logs} logs')
 
 if __name__ == "__main__":
@@ -15,10 +15,10 @@ if __name__ == "__main__":
 
     print('Methods:')
     for method in methods:
-        count = collection.count_documents({"method": method})
+        count = collection_nginx.count_documents({"method": method.lower()})
         print(f'\tmethod {method}: {count}')
 
-    status = collection.count_documents(
+    status = collection_nginx.count_documents(
         {"method": "GET", "path": "/status"}
     )
 
