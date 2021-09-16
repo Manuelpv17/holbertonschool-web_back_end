@@ -1,0 +1,1 @@
+Project: 0x10. ES6 classes | Holberton Intranet
