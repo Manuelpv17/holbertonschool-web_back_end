@@ -2,7 +2,7 @@ const request = require("request");
 const { expect } = require("chai");
 
 describe("8. Basic Integration testing ", () => {
-  it("respond with 200 code and body", (done) => {
+  it("GET /", (done) => {
     request("http://localhost:7865", "GET", (err, res, body) => {
       if (err) throw err;
       expect(res.statusCode).to.equal(200);
