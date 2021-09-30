@@ -2,7 +2,7 @@ const request = require("request");
 const { expect } = require("chai");
 
 describe("9. Regex integration testing ", function () {
-  it("Response from get index", function (done) {
+  it("GET /", function (done) {
     const options = {
       url: "http://localhost:7865",
       method: "GET",
@@ -14,7 +14,7 @@ describe("9. Regex integration testing ", function () {
     });
     done();
   });
-  it("response /cart/:id success", function (done) {
+  it("GET /cart/:id", function (done) {
     const options = {
       url: "http://localhost:7865/cart/12",
       method: "GET",
@@ -26,7 +26,7 @@ describe("9. Regex integration testing ", function () {
     });
     done();
   });
-  it("response /cart/:id invalid id", function (done) {
+  it("GET  /cart/:id", function (done) {
     const options = {
       url: "http://localhost:7865/cart/hello",
       method: "GET",
