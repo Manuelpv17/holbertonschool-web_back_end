@@ -9,9 +9,6 @@ describe("calculateNumber", () => {
     expect(calculateNumber("SUM", -2, -1)).to.equal(-3);
     expect(calculateNumber("SUM", -2.4, -5.7)).to.equal(-8);
   });
-  it("should throw error if NaN passed", function () {
-    expect(() => calculateNumber("SUM", NaN, 7).to.throw());
-  });
   it("returns rounded substract", () => {
     expect(calculateNumber("SUBTRACT", 2, 5)).to.equal(-3);
     expect(calculateNumber("SUBTRACT", 3.7, 6)).to.equal(-2);
@@ -23,7 +20,10 @@ describe("calculateNumber", () => {
     expect(calculateNumber("DIVIDE", 10.3, 2.4), 5);
     expect(calculateNumber("DIVIDE", 6.2, 0), "Error");
   });
+  it("should throw error if NaN passed", function () {
+    expect(() => calculateNumber("SUM", NaN, 7)).to.throw();
+  });
   it("should throw error if invalid type", function () {
-    expect(() => calculateNumber("NotAType", 23, 320).to.throw());
+    expect(() => calculateNumber("NotAType", 23, 320)).to.throw();
   });
 });
