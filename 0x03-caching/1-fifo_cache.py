@@ -9,6 +9,7 @@ class FIFOCache(BaseCaching):
 
     def __init__(self):
         """ Constructor """
+
         super().__init__()
         self.FIFO = []
 
