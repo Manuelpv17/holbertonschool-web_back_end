@@ -38,4 +38,7 @@ PII_FIELDS = ("name", "email", "phone", "ssn", "password")
 
 def get_logger() -> logging.Logger:
     """ 2. Create logger  """
-    return logging.getLogger('user_data')
+    dataLogger = logging.getLogger('user_data')
+    dataLogger.setLevel(logging.INFO)
+    dataLogger.propagate = False
+    return dataLogger
