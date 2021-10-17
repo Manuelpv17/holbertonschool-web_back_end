@@ -4,6 +4,8 @@
 from typing import List
 import re
 import logging
+import mysql.connector
+import os
 
 
 def filter_datum(fields: List[str], redaction: str,
@@ -48,3 +50,13 @@ def get_logger() -> logging.Logger:
     dataLogger.addHandler(handler)
 
     return dataLogger
+
+
+def get_db() -> mysql.connector.connection.MySQLConnection:
+    """ 3. Connect to secure database  """
+    return mysql.connector.connect(
+        host=os.getenv('PERSONAL_DATA_DB_HOST'),
+        database=os.getenv('PERSONAL_DATA_DB_NAME'),
+        user=os.getenv('PERSONAL_DATA_DB_USERNAME'),
+        password=os.getenv('PERSONAL_DATA_DB_PASSWORD')
+    )
